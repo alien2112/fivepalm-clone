@@ -125,6 +125,7 @@ body {
 .navbar__right { display: flex; align-items: center; }
 .navbar__actions { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
 .navbar__actions li { display: flex; }
+.navbar__right .icon-button { display: inline-flex; align-items: center; justify-content: center; }
 
 /* Right-side navbar icons: sizing and subtle animation on the last (sustainability) icon */
 .navbar__right .icon-button svg { width: 20px; height: 20px; transition: transform .2s ease; }
@@ -152,13 +153,14 @@ body {
     background: rgba(255,255,255,0.98);
     padding: 16px;
     border-bottom: 1px solid rgba(0,0,0,0.06);
-    transform: translateY(-8px);
+    transform: translateY(-10px);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 200ms ease;
+    transition: opacity 260ms cubic-bezier(.2,.8,.2,1), transform 260ms cubic-bezier(.2,.8,.2,1);
+    will-change: transform, opacity;
   }
   .navbar__center.is-open {
-    transform: none;
+    transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
   }
@@ -183,24 +185,7 @@ body {
 .navbar-search__input { flex: 1; padding: 12px 14px; border: 1px solid #e5e7eb; font-size: 16px; }
 .navbar-search__submit { padding: 12px 16px; border: 1px solid #111; background: #111; color: #fff; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
 
-/* Mobile drawer (side menu) */
-.navbar-drawer { position: fixed; inset: 0; z-index: 60; pointer-events: none; }
-.navbar-drawer.is-open { pointer-events: auto; }
-.navbar-drawer__overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); opacity: 0; transition: opacity .2s ease; }
-.navbar-drawer.is-open .navbar-drawer__overlay { opacity: 1; }
-.navbar-drawer__panel {
-  position: absolute; top: 0; bottom: 0; left: 0; width: min(84vw, 320px);
-  background: #fff; border-right: 1px solid #e5e7eb; transform: translateX(-100%);
-  transition: transform .25s ease;
-  display: grid; grid-template-rows: auto 1fr; align-content: start;
-}
-.navbar-drawer.is-open .navbar-drawer__panel { transform: none; }
-.navbar-drawer__close { background: transparent; border: none; width: 44px; height: 44px; margin: 8px; position: relative; cursor: pointer; }
-.navbar-drawer__close::before, .navbar-drawer__close::after { content: ''; position: absolute; left: 12px; right: 12px; height: 2px; background: #111; top: 21px; }
-.navbar-drawer__close::before { transform: rotate(45deg); }
-.navbar-drawer__close::after { transform: rotate(-45deg); }
-.navbar-drawer__nav { display: grid; padding: 12px; gap: 10px; }
-.navbar-drawer__nav a { text-decoration: none; color: #111; text-transform: uppercase; letter-spacing: .08em; font-weight: 900; padding: 10px 8px; }
+/* Remove left drawer implementation to match reference dropdown */
 
 .hero {
   position: relative;
@@ -699,7 +684,7 @@ body {
 .event-card:hover { box-shadow: 0 10px 24px rgba(0,0,0,0.12); transform: translateY(-2px); }
 .event-topbar { display: flex; align-items: center; justify-content: space-between; background: #fff; color: #111; padding: 12px; border-bottom: 1px solid #e5e7eb; }
 .event-date { opacity: .9; font-size: 14px; }
-.event-actions { display: flex; align-items: center; gap: 8px; }
+.event-actions { display: flex; align-items: center; gap: 8px; padding: 0 12px 12px; }
 .event-book { background: transparent; color: #111; padding: 0; text-decoration: none; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
 .event-ico { background: #fff; border: 1px solid #e5e7eb; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 6px; color: #111; }
 .event-title { padding: 12px; font-weight: 900; line-height: 1.1; font-size: clamp(20px, 2.6vw, 28px); }

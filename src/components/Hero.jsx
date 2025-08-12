@@ -1,4 +1,5 @@
 export default function Hero() {
+  const baseUrl = import.meta.env.BASE_URL
   return (
     <section className="hero hero--video" id="top" aria-label="Intro">
       <video
@@ -8,9 +9,9 @@ export default function Hero() {
         loop
         playsInline
         preload="auto"
-        poster="/michelin2025-1.png.webp"
+        poster={`${baseUrl}michelin2025-1.png.webp`}
       >
-        <source src="/hero.mp4" type="video/mp4" />
+        <source src={`${baseUrl}hero.mp4`} type="video/mp4" />
         <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
       </video>
 

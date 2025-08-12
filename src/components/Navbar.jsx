@@ -102,7 +102,9 @@ export default function Navbar() {
         <button
           className="icon-button"
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          onClick={() => setIsOpen((v) => !v)}
+          aria-expanded={isOpen}
+          aria-controls="primary-menu"
+          onClick={() => { setIsOpen((v) => !v); setIsSearchOpen(false); }}
         >
           <MenuIcon isOpen={isOpen} />
         </button>
@@ -113,7 +115,7 @@ export default function Navbar() {
         </a>
       </div>
 
-      <nav className={`navbar__center ${isOpen ? 'is-open' : ''}`} aria-label="Primary">
+      <nav id="primary-menu" className={`navbar__center ${isOpen ? 'is-open' : ''}`} aria-label="Primary">
         <a href="#rooms">Rooms</a>
         <a href="#dine">Dine</a>
         <a href="#events">Events</a>
@@ -130,7 +132,7 @@ export default function Navbar() {
               aria-label="Search"
               aria-expanded={isSearchOpen}
               aria-controls="navbar-search-panel"
-              onClick={() => setIsSearchOpen((v) => !v)}
+              onClick={() => { setIsSearchOpen((v) => !v); setIsOpen(false); }}
             >
               <Icon type="search" label="Search" />
             </button>
@@ -161,20 +163,7 @@ export default function Navbar() {
       </div>
     </div>
 
-    <div className={`navbar-drawer ${isOpen ? 'is-open' : ''}`} role="dialog" aria-label="Menu">
-      <div className="navbar-drawer__overlay" onClick={() => setIsOpen(false)} />
-      <aside className="navbar-drawer__panel">
-        <button className="navbar-drawer__close" aria-label="Close menu" onClick={() => setIsOpen(false)} />
-        <nav className="navbar-drawer__nav">
-          <a href="#rooms" onClick={() => setIsOpen(false)}>Rooms</a>
-          <a href="#dine" onClick={() => setIsOpen(false)}>Dine</a>
-          <a href="#events" onClick={() => setIsOpen(false)}>Events</a>
-          <a href="#relax" onClick={() => setIsOpen(false)}>Relax</a>
-          <a href="#music" onClick={() => setIsOpen(false)}>Music</a>
-          <a href="#shop" onClick={() => setIsOpen(false)}>Shop</a>
-        </nav>
-      </aside>
-    </div>
+    {/* Mobile dropdown uses existing .navbar__center with .is-open class */}
     </>
   )
 }

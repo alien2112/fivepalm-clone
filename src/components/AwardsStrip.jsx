@@ -1,11 +1,12 @@
 export default function AwardsStrip() {
+  const baseUrl = import.meta.env.BASE_URL
   const awards = [
-    '/25.11.24-FIVE-WEB-PALM-AWARDS-1.svg',
-    '/25.11.24-FIVE-WEB-PALM-AWARDS-1-1.svg',
-    '/25.11.24-FIVE-WEB-PALM-AWARDS-2-1.svg',
-    '/25.11.24-FIVE-WEB-PALM-AWARDS-3-1 (1).svg',
-    '/whatsonlogo.svg',
-    '/michelin2025-1.png.webp',
+    `${baseUrl}25.11.24-FIVE-WEB-PALM-AWARDS-1.svg`,
+    `${baseUrl}25.11.24-FIVE-WEB-PALM-AWARDS-1-1.svg`,
+    `${baseUrl}25.11.24-FIVE-WEB-PALM-AWARDS-2-1.svg`,
+    `${baseUrl}25.11.24-FIVE-WEB-PALM-AWARDS-3-1 (1).svg`,
+    `${baseUrl}whatsonlogo.svg`,
+    `${baseUrl}michelin2025-1.png.webp`,
   ]
 
   return (
